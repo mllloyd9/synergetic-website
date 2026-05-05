@@ -12,6 +12,21 @@ export default {
           bone: '#FAFAF7',
           slate: '#525B66',
         },
+        // Legacy aliases — only kept so the untouched legal pages
+        // (privacy / terms) keep rendering. Do not use in new code.
+        primary: {
+          100: '#FAFAF7',
+          200: '#E8F4EE',
+          600: '#00A86B',
+          700: '#00754A',
+          800: '#1A2025',
+          900: '#0F1419',
+        },
+        secondary: {
+          500: '#525B66',
+          700: '#1A2025',
+          900: '#0F1419',
+        },
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
