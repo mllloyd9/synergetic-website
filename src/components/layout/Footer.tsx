@@ -1,137 +1,124 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone, Instagram, Music, Facebook } from 'lucide-react';
-import Logo from '../ui/Logo';
+import { FlaskConical, Instagram, Music, Facebook, Twitter } from 'lucide-react';
+
+const CALENDLY_URL = 'https://calendly.com/synergeticconsult/30min';
+const SKOOL_URL = 'https://www.skool.com/the-wealth-lab-7543/about';
+const ID_CLUB_URL =
+  'https://idclub.com/signup417ar.asp?GUID=RFIHSDHEAX79&tGUID=76B7B77E-5F04-4A3B-AAED-4D206890235D';
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-  
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-brand-ink text-white">
       <div className="container-wrapper pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div className="lg:col-span-1">
-            <Logo isWhite className="h-8 mb-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <div>
+            <Link to="/" className="flex items-center space-x-2 text-white mb-4">
+              <FlaskConical className="h-7 w-7 text-brand-accent" />
+              <span className="text-xl font-bold">The Wealth Lab</span>
+            </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Building generational wealth through financial education, 
-              business structure, and community empowerment.
+              Your blueprint to wealth begins here.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.instagram.com/synergeticconsulting" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/synergeticconsulting"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Instagram"
+                className="text-gray-400 hover:text-brand-accent transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.tiktok.com/@synergeticconsulting_" 
-                target="_blank" 
+              <a
+                href="https://www.tiktok.com/@synergeticconsulting_"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="TikTok"
+                className="text-gray-400 hover:text-brand-accent transition-colors"
               >
                 <Music className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.facebook.com/thawealthlab" 
-                target="_blank" 
+              <a
+                href="https://www.facebook.com/thawealthlab"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Facebook"
+                className="text-gray-400 hover:text-brand-accent transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </a>
+              <a
+                href="https://www.twitter.com/synergeticconsult"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="text-gray-400 hover:text-brand-accent transition-colors"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
             </div>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Quick Links</h3>
+            <h3 className="text-base font-semibold mb-5 text-white uppercase tracking-wide">Quick Links</h3>
             <ul className="space-y-3">
+              <li><Link to="/" className="text-gray-300 hover:text-brand-accent transition-colors">Home</Link></li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
-                  About Marcus
-                </Link>
-              </li>
-              <li>
-                <Link to="/wealth-lab" className="text-gray-300 hover:text-white transition-colors">
-                  The Wealth Lab
-                </Link>
-              </li>
-              <li>
-                <Link to="/webinar" className="text-gray-300 hover:text-white transition-colors">
-                  Free Webinar
-                </Link>
-              </li>
-              <li>
-                <Link to="/booking" className="text-gray-300 hover:text-white transition-colors">
-                  Book Consultation
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Contact</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <Phone className="h-5 w-5 text-gray-400 mr-3 shrink-0 mt-0.5" />
-                <a href="tel:3107354143" className="text-gray-300 hover:text-white transition-colors">
-                  (310) 735-4143
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta="footer-book-call"
+                  className="text-gray-300 hover:text-brand-accent transition-colors"
+                >
+                  Book a Call
                 </a>
               </li>
-              <li className="flex items-start">
-                <Mail className="h-5 w-5 text-gray-400 mr-3 shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <a href="mailto:consultation@synergeticconsult.com" className="text-gray-300 hover:text-white transition-colors block">
-                    consultation@synergeticconsult.com
-                  </a>
-                  <a href="mailto:funding@synergeticconsult.com" className="text-gray-300 hover:text-white transition-colors block">
-                    funding@synergeticconsult.com
-                  </a>
-                  <a href="mailto:marcus@synergeticconsult.com" className="text-gray-300 hover:text-white transition-colors block">
-                    marcus@synergeticconsult.com
-                  </a>
-                </div>
+              <li><Link to="/id-club" className="text-gray-300 hover:text-brand-accent transition-colors">ID Club</Link></li>
+              <li>
+                <a
+                  href={SKOOL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta="footer-community"
+                  className="text-gray-300 hover:text-brand-accent transition-colors"
+                >
+                  Community
+                </a>
               </li>
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-gray-400 mr-3 shrink-0 mt-0.5" />
-                <span className="text-gray-300">
-                  30 N Gould St<br />
-                  Sheridan, WY 82801
-                </span>
-              </li>
+              <li><Link to="/webinar" className="text-gray-300 hover:text-brand-accent transition-colors">Webinar</Link></li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Legal</h3>
+            <h3 className="text-base font-semibold mb-5 text-white uppercase tracking-wide">Services</h3>
             <ul className="space-y-3">
-              <li>
-                <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
+              <li><Link to="/#services" className="text-gray-300 hover:text-brand-accent transition-colors">Credit Repair</Link></li>
+              <li><Link to="/#services" className="text-gray-300 hover:text-brand-accent transition-colors">Credit Sweep</Link></li>
+              <li><Link to="/#services" className="text-gray-300 hover:text-brand-accent transition-colors">Business Funding Stack</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-base font-semibold mb-5 text-white uppercase tracking-wide">Legal</h3>
+            <ul className="space-y-3">
+              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-brand-accent transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="text-gray-300 hover:text-brand-accent transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
-        
-        <div className="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:text-left">
-          <p className="text-gray-400 text-sm">
-            &copy; {currentYear} Synergetic Consulting Services. All rights reserved.
+
+        <div className="pt-8 border-t border-gray-800 space-y-4">
+          <p className="text-gray-400 text-xs leading-relaxed max-w-4xl">
+            Synergetic Consulting Services LLC is a credit repair organization as
+            defined under federal and state law. You have the right to dispute
+            inaccurate information in your credit report without the use of a
+            credit repair organization.
           </p>
-          <div className="mt-4 md:mt-0">
-            <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors mr-6">
-              Privacy Policy
-            </Link>
-            <Link to="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Terms of Service
-            </Link>
-          </div>
+          <p className="text-gray-500 text-sm">
+            &copy; 2026 Synergetic Consulting Services LLC. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
