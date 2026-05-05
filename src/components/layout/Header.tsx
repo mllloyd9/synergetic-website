@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, FlaskConical } from 'lucide-react';
+import CTAButton from '../ui/CTAButton';
 
 const CALENDLY_URL = 'https://calendly.com/synergeticconsult/30min';
 
@@ -83,15 +84,13 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center space-x-3">
-          <a
+          <CTAButton
+            label="Book a Call"
             href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cta="header-book-call"
-            className="btn-primary text-sm sm:text-base px-4 sm:px-6 py-2.5"
-          >
-            Book a Call
-          </a>
+            variant="primary"
+            dataCta="header-book-call"
+            className="text-sm sm:text-base px-4 sm:px-6 py-2.5"
+          />
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
