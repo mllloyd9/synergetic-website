@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import SEO from '../components/ui/SEO';
 
 const CALENDLY_URL = 'https://calendly.com/synergeticconsult/30min';
-const WLCRO_ENDPOINT = 'https://synergetic.whitelabelcro.com/api/v1/integrations/clients';
-const WLCRO_NEW_LEAD_STATUS_ID = 23152;
+const ZAPIER_WEBHOOK_URL = (import.meta.env.VITE_ZAPIER_WEBHOOK_URL as string | undefined) ?? '';
 
 type ScoreBucket = 'Under 500' | '500-549' | '550-599' | '600-649' | '650+';
 type NegativeCount = '1-5' | '6-10' | '11-20' | '20+';
@@ -113,26 +112,34 @@ const ApplyPage: React.FC = () => {
     e.preventDefault();
     setSubmitting(true);
 
-    const apiKey = (import.meta.env.VITE_WLCRO_API_KEY as string | undefined) ?? '';
-
     try {
-      await fetch(WLCRO_ENDPOINT, {
+      await fetch(ZAPIER_WEBHOOK_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Api-Key': apiKey,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           first_name: form.firstName,
           last_name: form.lastName,
           email: form.email,
           phone: form.phone,
-          source: 'website_apply_form',
-          status_id: WLCRO_NEW_LEAD_STATUS_ID,
+          equifax_score: form.equifax,
+          experian_score: form.experian,
+          transunion_score: form.transunion,
+          negative_count: form.negativeCount,
+          negative_types: form.negativeTypes.join(', '),
+          disputed_before: form.disputedBefore,
+          entity_type: form.entityType,
+          time_in_business: form.timeInBusiness,
+          monthly_revenue: form.revenue,
+          has_bank_account: form.hasBankAccount,
+          funding_amount: form.fundingAmount,
+          purpose: form.purpose,
+          source: form.source,
+          form_source: 'synergeticconsult.com/apply',
+          submitted_at: new Date().toISOString(),
         }),
       });
     } catch (err) {
-      console.error('WLCRO lead creation failed:', err);
+      console.error('Zapier webhook failed:', err);
     } finally {
       window.location.href = CALENDLY_URL;
     }
